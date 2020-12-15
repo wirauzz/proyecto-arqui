@@ -10,6 +10,8 @@ import { CourierItemComponent } from './modules/components/courier-item/courier-
 import { CouriersComponent } from './modules/components/couriers/couriers.component';
 import { CustomersComponent } from './modules/components/customers/customers.component';
 import { CustomerItemComponent } from './modules/components/customer-item/customer-item.component';
+import { AddCourierPageComponent } from './modules/pages/add-courier-page/add-courier-page.component';
+import { AddCustomerPageComponent } from './modules/pages/add-customer-page/add-customer-page.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,7 +21,9 @@ import { CustomerItemComponent } from './modules/components/customer-item/custom
     CourierItemComponent,
     CouriersComponent,
     CustomersComponent,
-    CustomerItemComponent
+    CustomerItemComponent,
+    AddCourierPageComponent,
+    AddCustomerPageComponent
   ],
   imports: [
     AlertModule.forRoot(),

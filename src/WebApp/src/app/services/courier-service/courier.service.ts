@@ -38,6 +38,4 @@ export class CourierService {
   removeCourier(courierId: Number) {
     return this.http.delete(`${this.courierUrl}/${courierId}`,httpOptions);
   }
-
-
 }
