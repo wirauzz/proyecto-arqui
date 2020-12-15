@@ -4,18 +4,22 @@ import { AlertModule } from 'ngx-bootstrap/alert';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './core/header/header.component';
-import { CustomerComponent } from './modules/components/customer/customer.component';
-import { CourierComponent } from './modules/components/courier/courier.component';
 import { CustomerPageComponent } from './modules/pages/customer-page/customer-page.component';
 import { CourierPageComponent } from './modules/pages/courier-page/courier-page.component';
+import { CourierItemComponent } from './modules/components/courier-item/courier-item.component';
+import { CouriersComponent } from './modules/components/couriers/couriers.component';
+import { CustomersComponent } from './modules/components/customers/customers.component';
+import { CustomerItemComponent } from './modules/components/customer-item/customer-item.component';
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    CustomerComponent,
-    CourierComponent,
     CustomerPageComponent,
-    CourierPageComponent
+    CourierPageComponent,
+    CourierItemComponent,
+    CouriersComponent,
+    CustomersComponent,
+    CustomerItemComponent
   ],
   imports: [
     AlertModule.forRoot(),
