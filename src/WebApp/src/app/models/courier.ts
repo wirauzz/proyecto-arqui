@@ -1,7 +1,10 @@
 export class Courier{
-    id:string;
-    name:string;
-    lastname:string;
-    CI:string;
-    vehicle:string;
+    _id:string;
+    Name:string;
+    LastName:string;
+    Ci:number;
+    Phone:number;
+    LicensePlate:string;
+    TypeOfVehicle:string;
+    __v:number;
 }

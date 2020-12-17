@@ -9,12 +9,10 @@ import { Customer } from 'src/app/models/Customer';
 })
 export class CustomersComponent implements OnInit {
   customers:Customer[];
-  customer:Customer;
-  constructor(private CustomerService: CustomerService) { }
+  constructor(private customerService: CustomerService) { }
 
   ngOnInit() {
-    this.CustomerService.getCustomers().subscribe(
-      customers => {
+    this.customerService.getCustomers().subscribe( customers => {
         this.customers = customers;
       }
     )

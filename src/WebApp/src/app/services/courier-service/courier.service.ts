@@ -15,7 +15,7 @@ const httpOptions = {
 })
 
 export class CourierService {
-  courierUrl: string = 'http://localhost:50000/api/couriers';
+  courierUrl: string = 'http://localhost:5000/api/couriers';
 
   constructor(private http: HttpClient) { }
   
@@ -32,7 +32,7 @@ export class CourierService {
   }
 
   edtiCourier(couerier: Courier):Observable<Courier> {
-    return this.http.put<Courier>(`${this.courierUrl}/${couerier.id}`,couerier,httpOptions);
+    return this.http.put<Courier>(`${this.courierUrl}/${couerier._id}`,couerier,httpOptions);
   }
 
   removeCourier(courierId: Number) {

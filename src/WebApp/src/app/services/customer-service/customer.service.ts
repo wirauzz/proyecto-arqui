@@ -16,12 +16,12 @@ const httpOptions = {
 
 export class CustomerService {
 
-  customerUrl: string = 'http://localhost:50000/api/Customers';
+  customerUrl: string = 'http://localhost:3000/api/v1/clients';
 
   constructor(private http: HttpClient) { }
   
   getCustomers(): Observable<Customer[]>{
-    return this.http.get<Customer[]>(`${this.customerUrl}`,httpOptions);
+    return this.http.get<Customer[]>(`${this.customerUrl}`);
   }
 
   getCustomer(idCustomer:string): Observable<Customer>{
@@ -32,8 +32,8 @@ export class CustomerService {
     return this.http.post<Customer>(this.customerUrl, newCustomer, httpOptions);
   }
 
-  edtiCustomer(couerier: Customer):Observable<Customer> {
-    return this.http.put<Customer>(`${this.customerUrl}/${couerier.id}`,couerier,httpOptions);
+  edtiCustomer(customer: Customer):Observable<Customer> {
+    return this.http.put<Customer>(`${this.customerUrl}/${customer._id}`,customer,httpOptions);
   }
 
   removeCustomer(CustomerId: Number) {

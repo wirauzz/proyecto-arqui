@@ -1,14 +1,25 @@
 <table class="table table-dark">
     <thead>
       <tr>
-        <th scope="col">ID</th>
-        <th scope="col">Nombre</th>
-        <th scope="col">Apellido</th>
-        <th scope="col">C.I.</th>
+        <th scope="col">#</th>
+        <th scope="col">Nombres</th>
+        <th scope="col">Apellidos</th>
+        <th scope="col">CI</th>
+        <th scope="col">Telefono</th>
+        <th scope="col">Placa</th>        
         <th scope="col">Movilidad</th>
       </tr>
     </thead>
     <tbody>
-      <app-courier-item *ngFor="let courier of couriers" [courier]="courier"></app-courier-item> 
+      <tr *ngFor="let courier of couriers; index as i">
+        <td>{{i+1}}</td>
+        <td>{{courier.Name}}</td>
+        <td>{{courier.LastName}}</td>
+        <td>{{courier.Ci}}</td>
+        <td>{{courier.Phone}}</td>
+        <td>{{courier.LicensePlate}}</td>
+        <td>{{courier.TypeOfVehicle}}</td>
+        <td></td>
+      </tr>
     </tbody>
   </table>
