@@ -14,6 +14,9 @@ import { AddCourierPageComponent } from './modules/pages/add-courier-page/add-co
 import { AddCustomerPageComponent } from './modules/pages/add-customer-page/add-customer-page.component';
 import { DeliveryManagmentPageComponent } from './modules/pages/delivery-managment-page/delivery-managment-page.component';
 import { HomePageComponent } from './modules/pages/home-page/home-page.component';
+import { EditCustomerPageComponent } from './modules/pages/edit-customer-page/edit-customer-page.component';
+import { EditCourierPageComponent } from './modules/pages/edit-courier-page/edit-courier-page.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +28,9 @@ import { HomePageComponent } from './modules/pages/home-page/home-page.component
     AddCourierPageComponent,
     AddCustomerPageComponent,
     DeliveryManagmentPageComponent,
-    HomePageComponent
+    HomePageComponent,
+    EditCustomerPageComponent,
+    EditCourierPageComponent
   ],
   imports: [
     HttpClientModule,
