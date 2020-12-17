@@ -20,4 +20,9 @@ export class CouriersComponent implements OnInit {
     )
   }
 
+  onDelete(id:string){
+    this.couriers = this.couriers.filter(c => c._id != id);
+    this.courierService.removeCourier(id).subscribe();
+  }
+
 }

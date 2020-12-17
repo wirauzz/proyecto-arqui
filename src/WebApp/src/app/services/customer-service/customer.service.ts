@@ -36,7 +36,7 @@ export class CustomerService {
     return this.http.put<Customer>(`${this.customerUrl}/${customer._id}`,customer,httpOptions);
   }
 
-  removeCustomer(CustomerId: Number) {
+  removeCustomer(CustomerId: string) {
     return this.http.delete(`${this.customerUrl}/${CustomerId}`,httpOptions);
   }
 

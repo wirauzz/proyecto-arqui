@@ -35,7 +35,7 @@ export class CourierService {
     return this.http.put<Courier>(`${this.courierUrl}/${couerier._id}`,couerier,httpOptions);
   }
 
-  removeCourier(courierId: Number) {
+  removeCourier(courierId: string) {
     return this.http.delete(`${this.courierUrl}/${courierId}`,httpOptions);
   }
 }
