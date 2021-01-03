@@ -1,0 +1,39 @@
+<div class="container mt-3">
+    <form [formGroup]='form' (ngSubmit)="onSubmit()">
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="inputName">Nombres</label>
+            <input type="text" class="form-control" id="inputName" placeholder="Nombre" formControlName="Name">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputLastName">Apellidos</label>
+            <input type="text" class="form-control" id="inputLastName" placeholder="Apellidos" formControlName="LastName">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="inputAddress">Numero de carnet</label>
+          <input type="number" class="form-control" id="inputAddress" placeholder="12345678" formControlName="Ci">
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="inputCity">Numero de telefono</label>
+            <input type="number" class="form-control" id="inputPhoneNumber" formControlName="Phone">
+          </div>
+          <div class="form-group col-md-4">
+            <label for="inputVehicle">Tipo de vehilculo</label>
+            <select id="inputVehicle" class="form-control" formControlName="TypeOfVehicle">
+              <option selected>Elejir...</option>
+              <option>Automovil</option>
+              <option>Motocicleta</option>
+              <option>Otro</option>
+            </select>
+          </div>
+          <div class="form-group col-md-2">
+            <label for="inputLicensePlate">Placa del vehiculo</label>
+            <input type="text" class="form-control" id="inputLicensePlate"  formControlName="LicensePlate">
+          </div>
+        </div>
+        <button routerLink='../../repartidores' class="btn btn-secondary mt-3 mr-3">Cancelar</button>
+        <button value="submit" type="submit" class="btn btn-primary mt-3 mr-3" >Agregar Reapartidor</button>
+    </form>
+</div>

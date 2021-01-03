@@ -1,0 +1,26 @@
+<div class="container mt-3">
+    <form [formGroup]='form' (ngSubmit)="onSubmit()"> 
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="inputName">Nombres</label>
+            <input type="text" class="form-control" id="inputName" placeholder="Nombre" formControlName="firstName">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputLastName">Apellidos</label>
+            <input type="text" class="form-control" id="inputLastName" placeholder="Apellidos" formControlName="lastName">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="inputAddress">Correo Electronico</label>
+          <input type="text" class="form-control" id="inputEmail" placeholder="1234@gmaicl.com" formControlName="email">
+        </div>
+        <div class="form-row">
+          <label for="inputCity">Carnet de Identidad</label>
+          <input type="number" class="form-control" id="inputCI" placeholder="numero de carnet de identidad" formControlName="CI">
+        </div>
+        <a routerLink='../../clientes' ><button class="btn btn-secondary mt-3 mr-3">Cancelar</button></a>
+        <button value="submit" type="submit" class="btn btn-primary mt-3 mr-3" >Agregar cliente</button>
+    </form>
+</div>
+
+
