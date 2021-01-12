@@ -1,25 +1,70 @@
 <div class="container mt-3">
-    <form [formGroup]='form' (ngSubmit)="onSubmit()"> 
+    <form [formGroup]="customerForm" (ngSubmit)="onSubmit()"> 
         <div class="form-row">
-          <div class="form-group col-md-6">
-            <label for="inputName">Nombres</label>
-            <input type="text" class="form-control" id="inputName" placeholder="Nombre" formControlName="firstName">
+
+          <div class="form-group col-md-6" [ngClass]="{'has-error' : customerForm.get('firstName').errors && 
+          (customerForm.get('firstName').touched || customerForm.get('firstName').dirty)}">
+            <label for="firstName" class="control-label">Nombres</label>
+            <input type="text" class="form-control" id="firstName" placeholder="Nombre" formControlName="firstName">
+           <span class="help-block" *ngIf="customerForm.get('firstName').errors && 
+           (customerForm.get('firstName').touched || customerForm.get('firstName').dirty)">
+              <span *ngIf="customerForm.get('firstName').errors.required">
+                El nombre es requerido
+              </span>
+              <span *ngIf="customerForm.get('firstName').errors.minlength || customerForm.get('firstName').errors.maxlength">
+                El nombre debe tener minimo 2 y maximo 10 caracteres
+              </span>
+          </span>
           </div>
-          <div class="form-group col-md-6">
-            <label for="inputLastName">Apellidos</label>
-            <input type="text" class="form-control" id="inputLastName" placeholder="Apellidos" formControlName="lastName">
+
+          <div class="form-group col-md-6" [ngClass]="{'has-error' : customerForm.get('lastName').errors && 
+          (customerForm.get('lastName').touched || customerForm.get('lastName').dirty)}">
+            <label for="lastName">Apellidos</label>
+            <input type="text" class="form-control" id="lastName" placeholder="Apellidos" formControlName="lastName">
+            <span class="help-block" *ngIf="customerForm.get('lastName').errors && 
+           (customerForm.get('lastName').touched || customerForm.get('lastName').dirty)">
+              <span *ngIf="customerForm.get('lastName').errors.required">
+                El apellido es requerido
+              </span>
+              <span *ngIf="customerForm.get('lastName').errors.minlength || customerForm.get('lastName').errors.maxlength">
+                El apellido tener minimo 2 y maximo 10 caracteres
+              </span>
+          </span>
           </div>
         </div>
-        <div class="form-group">
-          <label for="inputAddress">Correo Electronico</label>
-          <input type="text" class="form-control" id="inputEmail" placeholder="1234@gmaicl.com" formControlName="email">
+
+        <div class="form-group"  [ngClass]="{'has-error' : customerForm.get('email').errors && 
+        (customerForm.get('email').touched || customerForm.get('email').dirty)}">
+          <label for="email">Correo Electronico</label>
+          <input type="text" class="form-control" id="email" placeholder="1234@gmail.com" formControlName="email">
+          <span class="help-block" *ngIf="customerForm.get('email').errors && 
+          (customerForm.get('email').touched || customerForm.get('email').dirty)">
+             <span *ngIf="customerForm.get('email').errors.required">
+               El correo es requerido
+             </span>
+             <span *ngIf="customerForm.get('email').errors.email">
+               El correo ingresado no es valido
+             </span>
+         </span>
         </div>
-        <div class="form-row">
-          <label for="inputCity">Carnet de Identidad</label>
+
+        <div class="form-row"  [ngClass]="{'has-error' : customerForm.get('CI').errors && 
+        (customerForm.get('CI').touched || customerForm.get('CI').dirty)}">
+          <label for="inputCI">Carnet de Identidad</label>
           <input type="number" class="form-control" id="inputCI" placeholder="numero de carnet de identidad" formControlName="CI">
+          <span class="help-block" *ngIf="customerForm.get('CI').errors && 
+          (customerForm.get('CI').touched || customerForm.get('CI').dirty)">
+             <span *ngIf="customerForm.get('CI').errors.required">
+               El nuemro de carnet de identidad es requerido
+             </span>
+             <span *ngIf="customerForm.get('CI').errors.min || customerForm.get('CI').errors.maxlength || customerForm.get('CI').errors.minlength">
+               El Carnet de identidad ingresado no es valido
+             </span>
+         </span>
         </div>
-        <a routerLink='../../clientes' ><button class="btn btn-secondary mt-3 mr-3">Cancelar</button></a>
-        <button value="submit" type="submit" class="btn btn-primary mt-3 mr-3" >Agregar cliente</button>
+        <a routerLink='../../clientes' ><button class="btn btn-info mt-3 mr-3">Cancelar</button></a>
+        <button value="submit" type="submit" class="btn btn-primary mt-3 mr-3" [ngClass]="{'valid-form': customerForm.valid != true}">Agregar cliente</button>
+
     </form>
 </div>
 

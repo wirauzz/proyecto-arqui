@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { CustomerService } from 'src/app/services/Customer-service/Customer.service'
 import {Router} from '@angular/router';
 
@@ -11,29 +11,30 @@ import {Router} from '@angular/router';
 
 export class AddCustomerPageComponent implements OnInit {
   
-  form = new FormGroup({
-    firstName: new FormControl(''),
-    lastName: new FormControl(''),
-    email: new FormControl(''),
-    CI: new FormControl('')    
-  });
+  customerForm: FormGroup
 
-  constructor(private customerService: CustomerService, private router: Router) { }
+  constructor(private customerService: CustomerService, private router: Router, private formBuilder:FormBuilder) { }
 
   ngOnInit() {
+    this.customerForm = this.formBuilder.group({
+      firstName:['', [Validators.required, Validators.maxLength(10), Validators.minLength(2)]],
+      lastName:['',  [Validators.required, Validators.maxLength(10), Validators.minLength(2)]],
+      email:['', [Validators.required, Validators.email]],
+      CI:['', [Validators.required, Validators.min(1),Validators.maxLength(9), Validators.minLength(1)]]
+    })
   }
 
   onSubmit() {
     const newCustomer={
         _id : undefined,
-        ci : this.form.controls['CI'].value,
-        firstName:this.form.controls['firstName'].value,
-        lastName:this.form.controls['lastName'].value,
-        email:this.form.controls['email'].value,
+        ci : this.customerForm.controls['CI'].value,
+        firstName:this.customerForm.controls['firstName'].value,
+        lastName:this.customerForm.controls['lastName'].value,
+        email:this.customerForm.controls['email'].value,
         __v:undefined
     }
     this.customerService.addCustomer(newCustomer).subscribe();
-    this.form.reset();
+    this.customerForm.reset();
     this.router.navigateByUrl('/clientes');
   }
 
