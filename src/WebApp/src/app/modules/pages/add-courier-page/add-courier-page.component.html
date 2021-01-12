@@ -1,39 +1,106 @@
 <div class="container mt-3">
-    <form [formGroup]='form' (ngSubmit)="onSubmit()">
+    <form [formGroup]='courierForm' (ngSubmit)="onSubmit()">
         <div class="form-row">
-          <div class="form-group col-md-6">
-            <label for="inputName">Nombres</label>
-            <input type="text" class="form-control" id="inputName" placeholder="Nombre" formControlName="Name">
+          
+          <div class="form-group col-md-6" [ngClass]="{'has-error' : courierForm.get('Name').errors && 
+          (courierForm.get('Name').touched || courierForm.get('Name').dirty)}">
+            <label for="Name">Nombres</label>
+            <input type="text" class="form-control" id="Name" placeholder="Nombre" formControlName="Name">
+        
+          <span class="help-block" *ngIf=" courierForm.get('Name').errors && 
+          (courierForm.get('Name').touched || courierForm.get('Name').dirty)">
+            <span *ngIf="courierForm.get('Name').errors.required">
+              El nombre del repartidor es requerido
+            </span>
+            <span *ngIf="courierForm.get('Name').errors.minlength || courierForm.get('Name').errors.maxlength">
+              El noombre debe tener minimo 2 y maximo 10 caracteres
+            </span>
+        </span>
           </div>
-          <div class="form-group col-md-6">
-            <label for="inputLastName">Apellidos</label>
-            <input type="text" class="form-control" id="inputLastName" placeholder="Apellidos" formControlName="LastName">
+
+          
+          <div class="form-group col-md-6" [ngClass]="{'has-error' : courierForm.get('LastName').errors && 
+          (courierForm.get('LastName').touched || courierForm.get('LastName').dirty)}">
+            <label for="LastName">Apellidos</label>
+            <input type="text" class="form-control" id="LastName" placeholder="Apellidos" formControlName="LastName">
+
+            <span class="help-block" *ngIf=" courierForm.get('LastName').errors && 
+            (courierForm.get('LastName').touched || courierForm.get('LastName').dirty)">
+              <span *ngIf="courierForm.get('LastName').errors.required">
+                El apellido del repartidor es requerido
+              </span>
+              <span *ngIf="courierForm.get('LastName').errors.minlength || courierForm.get('LastName').errors.maxlength">
+                El apellido debe tener minimo 2 y maximo 10 caracteres
+              </span>
+          </span>
           </div>
+
+
         </div>
-        <div class="form-group">
-          <label for="inputAddress">Numero de carnet</label>
-          <input type="number" class="form-control" id="inputAddress" placeholder="12345678" formControlName="Ci">
+
+
+
+        <div class="form-group" [ngClass]="{'has-error' : courierForm.get('Ci').errors && 
+        (courierForm.get('Ci').touched || courierForm.get('Ci').dirty)}">
+          <label for="Ci">Numero de carnet</label>
+          <input type="number" class="form-control" id="Ci" placeholder="12345678" formControlName="Ci">
+
+          <span class="help-block" *ngIf=" courierForm.get('Ci').errors && 
+          (courierForm.get('Ci').touched || courierForm.get('Ci').dirty)">
+            <span *ngIf="courierForm.get('Ci').errors.required">
+              El CI del repartidor es requerido
+            </span>
+            <span *ngIf="courierForm.get('Ci').errors.min || courierForm.get('Ci').errors.max">
+              El CI ingresado no es valido
+            </span>
+        </span>
         </div>
+
+
         <div class="form-row">
-          <div class="form-group col-md-6">
-            <label for="inputCity">Numero de telefono</label>
-            <input type="number" class="form-control" id="inputPhoneNumber" formControlName="Phone">
+          <div class="form-group col-md-6" [ngClass]="{'has-error' : courierForm.get('Phone').errors && 
+          (courierForm.get('Phone').touched || courierForm.get('Phone').dirty)}">
+            <label for="Phone">Numero de telefono</label>
+            <input type="number" class="form-control" id="Phone" formControlName="Phone">
+
+            <span class="help-block" *ngIf=" courierForm.get('Phone').errors && 
+              (courierForm.get('Phone').touched || courierForm.get('Phone').dirty)">
+              <span *ngIf="courierForm.get('Phone').errors.required">
+                El numero de telefono del repartidor es requerido
+              </span>
+              <span *ngIf="courierForm.get('Phone').errors.min || courierForm.get('Phone').errors.max">
+                El numero de telefono no es valido
+              </span>
+           </span>
+
+
           </div>
           <div class="form-group col-md-4">
             <label for="inputVehicle">Tipo de vehilculo</label>
             <select id="inputVehicle" class="form-control" formControlName="TypeOfVehicle">
-              <option selected>Elejir...</option>
               <option>Automovil</option>
               <option>Motocicleta</option>
               <option>Otro</option>
             </select>
           </div>
-          <div class="form-group col-md-2">
-            <label for="inputLicensePlate">Placa del vehiculo</label>
-            <input type="text" class="form-control" id="inputLicensePlate"  formControlName="LicensePlate">
+
+
+          <div class="form-group col-md-2" [ngClass]="{'has-error' : courierForm.get('LicensePlate').errors && 
+          (courierForm.get('LicensePlate').touched || courierForm.get('LicensePlate').dirty)}">
+            <label for="LicensePlate">Placa del vehiculo</label>
+            <input type="text" class="form-control" id="LicensePlate"  formControlName="LicensePlate">
+            <span class="help-block" *ngIf=" courierForm.get('LicensePlate').errors && 
+            (courierForm.get('LicensePlate').touched || courierForm.get('LicensePlate').dirty)">
+              <span *ngIf="courierForm.get('LicensePlate').errors.required">
+                La placa del vehiculo es necesaria
+              </span>
+              <span *ngIf="courierForm.get('LicensePlate').errors.minlength || courierForm.get('LicensePlate').errors.maxlength">
+                La placa del vehiculo es invalida
+              </span>
+            </span>
           </div>
         </div>
-        <button routerLink='../../repartidores' class="btn btn-secondary mt-3 mr-3">Cancelar</button>
-        <button value="submit" type="submit" class="btn btn-primary mt-3 mr-3" >Agregar Reapartidor</button>
+        <button routerLink='../../repartidores' class="btn btn-info mt-3 mr-3">Cancelar</button>
+        <button value="submit" type="submit" class="btn btn-primary mt-3 mr-3" [ngClass]="{'valid-form': courierForm.valid != true}">Agregar Reapartidor</button>
     </form>
 </div>
