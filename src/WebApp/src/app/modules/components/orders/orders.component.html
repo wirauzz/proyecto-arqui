@@ -28,11 +28,13 @@
             </button>
           </a>
 
-            <button type="button" class="btn btn-warning ml-4"  (click)="onDecline(order.id) " [ngClass]="{'done': order.pedidoStatus == 'Entregando...' || order.pedidoStatus == 'Entregado'}">
+            <button type="button" class="btn btn-warning ml-4"  (click)="onDecline(order.id) " 
+            [ngClass]="{'done': order.pedidoStatus == 'Entregando...' || order.pedidoStatus == 'Entregado'}">
               <span class="glyphicon glyphicon-remove"></span>
             </button>
 
-            <button type="button" class="btn btn-success ml-4" (click)="onConfirm(order.id)" [ngClass]="{'done': order.pedidoStatus == 'Entregando...' || order.pedidoStatus == 'Entregado'}">
+            <button type="button" class="btn btn-success ml-4" (click)="onConfirm(order.id)" 
+            [ngClass]="{'done': order.pedidoStatus == 'Entregando...' || order.pedidoStatus == 'Entregado'}">
               <span class="glyphicon glyphicon-ok"></span>
             </button>
        </td>

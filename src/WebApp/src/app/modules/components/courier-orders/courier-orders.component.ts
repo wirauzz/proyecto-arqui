@@ -25,14 +25,9 @@ export class CourierOrdersComponent implements OnInit {
 
   addToQueue(id: number){
     var order = this.orders.find(order => order.id== id)
-    order.pedidoStatus = "Entregando..."
+    order.pedidoStatus = "Entregado"
     order.idRepartidorAsignado = this.courier
     this.orderService.edtiOrder(order).subscribe()
   }
 
-  onDelivery(id:number){
-    var order = this.orders.find(order => order.id== id)
-    order.pedidoStatus = "Entregado"
-    this.orderService.edtiOrder(order).subscribe()
-  }
 }

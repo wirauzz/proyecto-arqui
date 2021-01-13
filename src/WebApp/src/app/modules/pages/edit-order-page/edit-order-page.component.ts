@@ -20,13 +20,13 @@ export class EditOrderPageComponent implements OnInit {
 
     this.orderServce.getOrder(this.orderId).subscribe( currentOrder =>{
       this.orderForm = this.formBuilder.group({
-        idCliente:[currentOrder.idCliente, [Validators.required]],
-        idRepartidorAsignado:[currentOrder.idRepartidorAsignado,[Validators.required]],
+        idCliente:[currentOrder.idCliente],
+        idRepartidorAsignado:[currentOrder.idRepartidorAsignado],
         descripcionPedido:[currentOrder.descripcionPedido,[Validators.required]],
         itemsPedido:[currentOrder.itemsPedido,[Validators.required]],
         direccionEntrega:[currentOrder.direccionEntrega,[Validators.required]],
         pedidoStatus:[currentOrder.pedidoStatus,[Validators.required]],
-        notasEntrega:[currentOrder.notasEntrega,[Validators.required]]
+        notasEntrega:[currentOrder.notasEntrega]
       })
     });
    
