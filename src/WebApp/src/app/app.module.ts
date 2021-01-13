@@ -18,6 +18,11 @@ import { EditCustomerPageComponent } from './modules/pages/edit-customer-page/ed
 import { EditCourierPageComponent } from './modules/pages/edit-courier-page/edit-courier-page.component';
 import { OrdersComponent } from './modules/components/orders/orders.component';
 import { AddOrderPageComponent } from './modules/pages/add-order-page/add-order-page.component';
+import { CustomerAddOrderComponent } from './modules/pages/customer-add-order/customer-add-order.component';
+import { CustomerInfoComponent } from './modules/pages/customer-info/customer-info.component';
+import { CustomerOrdersComponent } from './modules/components/customer-orders/customer-orders.component';
+import { CourierInfoComponent } from './modules/pages/courier-info/courier-info.component';
+import { CourierOrdersComponent } from './modules/components/courier-orders/courier-orders.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +39,12 @@ import { AddOrderPageComponent } from './modules/pages/add-order-page/add-order-
     EditCustomerPageComponent,
     EditCourierPageComponent,
     OrdersComponent,
-    AddOrderPageComponent
+    AddOrderPageComponent,
+    CustomerAddOrderComponent,
+    CustomerInfoComponent,
+    CustomerOrdersComponent,
+    CourierInfoComponent,
+    CourierOrdersComponent
   ],
   imports: [
     HttpClientModule,

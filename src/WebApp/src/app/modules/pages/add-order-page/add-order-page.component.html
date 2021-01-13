@@ -5,7 +5,7 @@
           (orderForm.get('idCliente').touched || orderForm.get('idCliente').dirty)}">
             <label for="idCliente" class="control-label">Cliente</label>
             <select id="idCliente" class="form-control" formControlName="idCliente">
-              <option *ngFor="let customer of customers">{{customer.firstName}}</option>
+              <option *ngFor="let customer of customers">{{customer.firstName}} {{customer.lastName}}</option>
             </select>
             <span class="help-block" *ngIf="orderForm.get('idCliente').errors && 
             (orderForm.get('idCliente').touched || orderForm.get('idCliente').dirty)">
@@ -20,8 +20,14 @@
           (orderForm.get('idRepartidorAsignado').touched || orderForm.get('idRepartidorAsignado').dirty)}">
             <label for="idRepartidorAsignado" class="control-label">Repartidor</label>
             <select id="idRepartidorAsignado" class="form-control" formControlName="idRepartidorAsignado">
-              <option *ngFor="let customer of customers">{{customer.firstName}}</option>
+              <option *ngFor="let courier of couriers">{{courier.Name}} {{courier.LastName}}</option>
             </select>
+            <span class="help-block" *ngIf="orderForm.get('idRepartidorAsignado').errors && 
+            (orderForm.get('idRepartidorAsignado').touched || orderForm.get('idRepartidorAsignado').dirty)">
+               <span *ngIf="orderForm.get('idRepartidorAsignado').errors.required">
+                 El repartidor es requerido
+               </span>
+           </span>
           </div>
         </div>
 

@@ -1,0 +1,41 @@
+<div class="container mt-3">
+    <form [formGroup]="orderForm" (ngSubmit)="onSubmit()">
+        <div class="form-group"  [ngClass]="{'has-error' : orderForm.get('itemsPedido').errors && 
+        (orderForm.get('itemsPedido').touched || orderForm.get('itemsPedido').dirty)}">
+          <label for="itemsPedido">Que es lo que quiere</label>
+          <textarea type="text" class="form-control" id="itemsPedido" placeholder="Esribe tu pedido aqui..." formControlName="itemsPedido"></textarea>
+          <span class="help-block" *ngIf="orderForm.get('itemsPedido').errors && 
+          (orderForm.get('itemsPedido').touched || orderForm.get('itemsPedido').dirty)">
+             <span *ngIf="orderForm.get('itemsPedido').errors.required">
+               Escribe los items que quieres pedir 
+             </span>
+         </span>
+        </div>
+
+        <div class="form-row"  [ngClass]="{'has-error' : orderForm.get('descripcionPedido').errors && 
+        (orderForm.get('descripcionPedido').touched || orderForm.get('descripcionPedido').dirty)}">
+          <label for="descripcionPedido">Notas para la entrega (Opcional)</label>
+          <textarea type="text" class="form-control" id="descripcionPedido" placeholder="Escriba cualquier informacion adicional aqui..." formControlName="descripcionPedido"></textarea>
+        </div>
+
+
+        
+        <div class="form-group"  [ngClass]="{'has-error' : orderForm.get('direccionEntrega').errors && 
+        (orderForm.get('direccionEntrega').touched || orderForm.get('direccionEntrega').dirty)}">
+          <label for="direccionEntrega">Direccion de entega</label>
+          <input type="text" class="form-control" id="direccionEntrega" placeholder="Destino de la entrega" formControlName="direccionEntrega">
+          <span class="help-block" *ngIf="orderForm.get('direccionEntrega').errors && 
+          (orderForm.get('direccionEntrega').touched || orderForm.get('direccionEntrega').dirty)">
+             <span *ngIf="orderForm.get('direccionEntrega').errors.required">
+               La direccion es obligatoria
+             </span>
+         </span>
+        </div>
+
+        <button class="btn btn-info mt-3 mr-3" [routerLink]="['/clientes',this.activatedRoute.snapshot.paramMap.get('customerId')]">Cancelar</button>
+        <button value="submit" type="submit" class="btn btn-primary mt-3 mr-3" [ngClass]="{'valid-form': orderForm.valid != true}">Agregar cliente</button>
+
+    </form>
+</div>
+
+

@@ -9,7 +9,6 @@ namespace Pedidos.Models
     public class Pedidos
     {
         public int id { get; set; }
-        [Required(ErrorMessage = "El nombre es requerido")]
         public string idRepartidorAsignado { get; set; }
         public string idCliente { get; set; }
         public string descripcionPedido { get; set; }

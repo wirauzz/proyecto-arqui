@@ -1,0 +1,19 @@
+.has-error {
+    color: rgb(206, 9, 9);
+}
+
+.has-error input{
+    border-color: rgb(206, 9, 9);
+}
+
+
+.has-error ::placeholder{
+    color: rgb(208, 128, 128);
+}
+
+
+.valid-form{
+    background-color: grey;
+    pointer-events: none;
+    border-color: grey;
+}

@@ -1,0 +1,13 @@
+
+<div class="container mt-5">
+    <h1 class="display-4">{{courier.Name}} {{courier.LastName}}</h1>
+    <p class="lead">
+    Vehiculo: {{courier.TypeOfVehicle}} &nbsp; Telefono: {{courier.Phone}}
+    </p>
+    <app-courier-orders></app-courier-orders>
+      
+    <button type="button" class="btn btn-secondary" [routerLink]="['/clientes',this.activatedRoute.snapshot.paramMap.get('customerId'),'nuevo-pedido']">
+        Agregar Nuevo Pedido
+    </button>
+  </div>
+  

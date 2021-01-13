@@ -17,13 +17,14 @@ import { Customer } from 'src/app/models/Customer';
 export class AddOrderPageComponent implements OnInit {
 
   customers:Customer[];
+  couriers:Courier[];
   orderForm: FormGroup;
 
-  constructor(private customerService: CustomerService,private router: Router, private formBuilder:FormBuilder, private orderServce: OrderService) { }
+  constructor(private customerService: CustomerService,private router: Router, private formBuilder:FormBuilder, private orderServce: OrderService, private courierSerivce:CourierService) { }
 
   ngOnInit() {
     this.orderForm = this.formBuilder.group({
-      idCliente:[''],
+      idCliente:['', [Validators.required]],
       idRepartidorAsignado:['',[Validators.required]],
       descripcionPedido:['',[Validators.required]],
       itemsPedido:['',[Validators.required]],
@@ -33,6 +34,9 @@ export class AddOrderPageComponent implements OnInit {
     })
     this.customerService.getCustomers().subscribe( customers => {
       this.customers = customers;
+    })
+    this.courierSerivce.getCouriers().subscribe( customers => {
+      this.couriers = customers;
     })
   }
 
