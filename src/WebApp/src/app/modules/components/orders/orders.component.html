@@ -1,0 +1,43 @@
+
+<table class="table table-sm">
+    <thead>
+      <tr>
+        <th scope="col">#</th> 
+        <th scope="col">Pedido</th>
+        <th scope="col">Comentarios del pedido</th>
+        <th scope="col">Direccion de entrega</th>
+        <th scope="col">Estado</th>
+        <th scope="col">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let order of orders; index as i" [ngClass]="{'table-info': order.pedidoStatus == 'Aceptado', 'table-warning': order.pedidoStatus == 'Rechazado'}" >
+        <td>{{i+1}}</td>
+        <td>{{order.itemsPedido}}</td>
+        <td>{{order.descripcionPedido}}</td>
+        <td>{{order.direccionEntrega}}</td>
+        <td>{{order.pedidoStatus}}</td> 
+        <td>
+          <button class="btn btn-danger" (click)="onDelete(order.id)">
+           <span class="glyphicon glyphicon-trash"></span>
+          </button>
+
+          <a routerLink="/pedidos/{{order.id}}/editar">
+            <button type="button" class="btn btn-primary ml-4">
+              <span class="glyphicon glyphicon-edit"></span>
+            </button>
+          </a>
+
+            <button type="button" class="btn btn-warning ml-4"  (click)="onDecline(order.id) " 
+            [ngClass]="{'done': order.pedidoStatus == 'Entregando...' || order.pedidoStatus == 'Entregado'}">
+              <span class="glyphicon glyphicon-remove"></span>
+            </button>
+
+            <button type="button" class="btn btn-success ml-4" (click)="onConfirm(order.id)" 
+            [ngClass]="{'done': order.pedidoStatus == 'Entregando...' || order.pedidoStatus == 'Entregado'}">
+              <span class="glyphicon glyphicon-ok"></span>
+            </button>
+       </td>
+      </tr>
+    </tbody>
+  </table>

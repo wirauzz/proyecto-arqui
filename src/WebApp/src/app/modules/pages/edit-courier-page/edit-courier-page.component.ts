@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CourierService } from 'src/app/services/courier-service/courier.service';
 import {Router, ActivatedRoute} from '@angular/router';
 
@@ -11,42 +11,37 @@ import {Router, ActivatedRoute} from '@angular/router';
 })
 export class EditCourierPageComponent implements OnInit {
 
-  form = new FormGroup({
-    Name: new FormControl(''),
-    LastName: new FormControl(''),
-    Ci: new FormControl(''),
-    Phone: new FormControl(''),
-    LicensePlate: new FormControl(''),
-    TypeOfVehicle: new FormControl('')    
-  });
+  courierForm: FormGroup
 
-  constructor(private courierServicee: CourierService, private router: Router, private activatedRoute: ActivatedRoute) { }
+  constructor(private courierServicee: CourierService, private router: Router, private activatedRoute: ActivatedRoute, private formBuilder:FormBuilder) { }
 
   ngOnInit() {
     this.courierServicee.getCourier(this.activatedRoute.snapshot.paramMap.get('courierId')).subscribe(courier => {
-      this.form.controls['Name'].setValue( courier.Name);
-      this.form.controls['LastName'].setValue( courier.LastName);
-      this.form.controls['Ci'].setValue( courier.Ci);
-      this.form.controls['Phone'].setValue( courier.Phone) ;
-      this.form.controls['LicensePlate'].setValue( courier.LicensePlate) ;
-      this.form.controls['TypeOfVehicle'].setValue( courier.TypeOfVehicle) ;}
-    )
-  }
+      this.courierForm = this.formBuilder.group({
+        Name:[courier.Name,[Validators.required,Validators.maxLength(10), Validators.minLength(2)]],
+        LastName:[courier.LastName,[Validators.required,Validators.maxLength(10), Validators.minLength(2)]],
+        Ci:[courier.Ci,[Validators.required,Validators.min(1), Validators.max(999999999)]],
+        Phone:[courier.Phone,[Validators.required,Validators.min(1), Validators.max(999999999)]],
+        LicensePlate:[courier.LicensePlate.toString(),[Validators.required,Validators.minLength(5),Validators.maxLength(8)]],
+        TypeOfVehicle:[courier.TypeOfVehicle.toString(),[Validators.required]]
+      })
+      })
+    }
 
 
   onSubmit() {
     const newCourier={
         _id : this.activatedRoute.snapshot.paramMap.get('courierId'),
-        Name: this.form.controls['Name'].value,
-        LastName: this.form.controls['LastName'].value,
-        Ci: this.form.controls['Ci'].value,
-        Phone: this.form.controls['Phone'].value,
-        LicensePlate: this.form.controls['LicensePlate'].value,
-        TypeOfVehicle: this.form.controls['TypeOfVehicle'].value,    
+        Name: this.courierForm.controls['Name'].value,
+        LastName: this.courierForm.controls['LastName'].value,
+        Ci: this.courierForm.controls['Ci'].value,
+        Phone: this.courierForm.controls['Phone'].value,
+        LicensePlate: this.courierForm.controls['LicensePlate'].value,
+        TypeOfVehicle: this.courierForm.controls['TypeOfVehicle'].value,  
         __v:undefined
     }
     this.courierServicee.edtiCourier(newCourier).subscribe();
-    this.form.reset();
-    this.router.navigateByUrl('/repartidores');
+    this.courierForm.reset();
+    this.router.navigate(['/repartidores']);
   }
 }

@@ -1,0 +1,27 @@
+<table class="table table-sm">
+    <thead>
+      <tr>
+        <th scope="col">#</th> 
+        <th scope="col">Pedido</th>
+        <th scope="col">Comentarios del pedido</th>
+        <th scope="col">Direccion de entrega</th>
+        <th scope="col">Estado</th>
+        <th scope="col">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="table-dark" *ngFor="let order of orders; index as i">
+        <td>{{i+1}}</td>
+        <td>{{order.itemsPedido}}</td>
+        <td>{{order.descripcionPedido}}</td>
+        <td>{{order.direccionEntrega}}</td>
+        <td>{{order.pedidoStatus}}</td> 
+        <td>
+          <button class="btn btn-warning" (click)="addToQueue(order.id)">
+            <span class="glyphicon glyphicon-inbox"></span>
+          </button>
+
+       </td>
+      </tr>
+    </tbody>
+  </table>

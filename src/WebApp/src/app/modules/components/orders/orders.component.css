@@ -1,0 +1,5 @@
+.done{
+    background-color: grey;
+    pointer-events: none;
+    border-color: grey;
+}

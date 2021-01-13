@@ -37,7 +37,7 @@ export class AddCourierPageComponent implements OnInit {
         Phone: this.courierForm.controls['Phone'].value,
         LicensePlate: this.courierForm.controls['LicensePlate'].value,
         TypeOfVehicle: this.courierForm.controls['TypeOfVehicle'].value,    
-        __v:undefined
+        __v:undefined 
     }
     this.courierServicee.addCourier(newCourier).subscribe();
     this.courierForm.reset();

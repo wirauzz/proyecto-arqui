@@ -1,0 +1,13 @@
+
+<div class="container mt-5">
+    <h1 class="display-4">{{customer.firstName}} {{customer.lastName}}</h1>
+    <p class="lead">
+    Correo: {{customer.email}}
+    </p>
+    <app-customer-orders [customer]="this.activatedRoute.snapshot.paramMap.get('customerId')"></app-customer-orders>
+      
+    <button type="button" class="btn btn-secondary" [routerLink]="['/clientes',this.activatedRoute.snapshot.paramMap.get('customerId'),'nuevo-pedido']">
+        Agregar Nuevo Pedido
+    </button>
+  </div>
+  
