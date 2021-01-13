@@ -8,10 +8,11 @@ import { DeliveryManagmentPageComponent } from './modules/pages/delivery-managme
 import { HomePageComponent } from './modules/pages/home-page/home-page.component';
 import { EditCustomerPageComponent } from './modules/pages/edit-customer-page/edit-customer-page.component';
 import { EditCourierPageComponent } from './modules/pages/edit-courier-page/edit-courier-page.component';
-import { AddOrderPageComponent } from './modules/pages/add-order-page/add-order-page.component';
 import { CustomerAddOrderComponent } from './modules/pages/customer-add-order/customer-add-order.component';
 import { CustomerInfoComponent } from './modules/pages/customer-info/customer-info.component';
-import { CourierInfoComponent } from './modules/pages/courier-info/courier-info.component'
+import { CourierInfoComponent } from './modules/pages/courier-info/courier-info.component';
+import { EditOrderPageComponent } from './modules/pages/edit-order-page/edit-order-page.component';
+
 const routes: Routes = [
   {path: 'clientes', component: CustomerPageComponent},
   {path: 'repartidores', component: CourierPageComponent},
@@ -21,10 +22,10 @@ const routes: Routes = [
   {path: '', component: HomePageComponent},
   {path: 'clientes/editar/:customerId', component: EditCustomerPageComponent},
   {path: 'repartidores/editar/:courierId', component: EditCourierPageComponent},
-  {path: 'pedidos/agregar', component: AddOrderPageComponent},
   {path: 'clientes/:customerId/nuevo-pedido', component: CustomerAddOrderComponent},
   {path: 'clientes/:customerId', component: CustomerInfoComponent},
-  {path: 'repartidores/:courierId', component: CourierInfoComponent}
+  {path: 'repartidores/:courierId', component: CourierInfoComponent},
+  {path: 'pedidos/:orderId/editar', component: EditOrderPageComponent}
   
 
 ];

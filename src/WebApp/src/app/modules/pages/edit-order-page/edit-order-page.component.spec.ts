@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AddOrderPageComponent } from './add-order-page.component';
+import { EditOrderPageComponent } from './edit-order-page.component';
 
-describe('AddOrderPageComponent', () => {
-  let component: AddOrderPageComponent;
-  let fixture: ComponentFixture<AddOrderPageComponent>;
+describe('EditOrderPageComponent', () => {
+  let component: EditOrderPageComponent;
+  let fixture: ComponentFixture<EditOrderPageComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AddOrderPageComponent ]
+      declarations: [ EditOrderPageComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AddOrderPageComponent);
+    fixture = TestBed.createComponent(EditOrderPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
